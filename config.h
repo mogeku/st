@@ -204,6 +204,7 @@ static char *copyurlcmd[] = { "/bin/sh", "-c",
     "externalpipe", NULL };
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
 
+// https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ Mod1Mask|ControlMask, XK_l,           externalpipe,   {.v = openurlcmd } },
