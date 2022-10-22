@@ -200,10 +200,13 @@ static char *openurlcmd[] = { "/bin/sh", "-c",
     "sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?#=_-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)'| uniq | sed 's/^www./http:\\/\\/www\\./g' | dmenu -fn 'JetBrainsMono Nerd Font Mono:size=20' -i -p 'Follow which url?' -l 10 | xargs -r xdg-open",
     "externalpipe", NULL };
 
+static char *copyoutput[] = { "/bin/sh", "-c", "dmenu -fn 'JetBrainsMono Nerd Font Mono:size=20' -i -p 'Select Copy output' -l 10 | tr -d '\n' | xsel -b", NULL };
+
 // https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ Mod1Mask|ControlMask, XK_l,           externalpipe,   {.v = openurlcmd } },
+	{ Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
 	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
